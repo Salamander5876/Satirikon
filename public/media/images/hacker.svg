@@ -1,0 +1,39 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#000000"/>
+  <text x="400" y="150" font-family="Courier New" font-size="60" fill="#ffffff" text-anchor="middle" font-weight="bold">
+    ANONYMOUS
+  </text>
+  <text x="400" y="250" font-family="Courier New" font-size="30" fill="#ffffff" text-anchor="middle">
+    We are watching you
+  </text>
+  <text x="400" y="320" font-family="Courier New" font-size="20" fill="#888888" text-anchor="middle">
+    _______________
+  </text>
+  <text x="400" y="380" font-family="Courier New" font-size="24" fill="#ffffff" text-anchor="middle">
+    WE ARE LEGION
+  </text>
+  <text x="400" y="420" font-family="Courier New" font-size="24" fill="#ffffff" text-anchor="middle">
+    WE DO NOT FORGIVE
+  </text>
+  <text x="400" y="460" font-family="Courier New" font-size="24" fill="#ffffff" text-anchor="middle">
+    WE DO NOT FORGET
+  </text>
+  <text x="400" y="520" font-family="Courier New" font-size="20" fill="#888888" text-anchor="middle">
+    EXPECT US
+  </text>
+
+  <!-- Glowing effect -->
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <circle cx="400" cy="100" r="3" fill="#ffffff" opacity="0.8">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+  </circle>
+</svg>

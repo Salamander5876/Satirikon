@@ -1,0 +1,56 @@
+{
+  "images": [
+    {
+      "id": "hacker",
+      "name": "Hacker Anonymous",
+      "file": "hacker.svg"
+    },
+    {
+      "id": "skull",
+      "name": "Skull Warning",
+      "file": "skull.svg"
+    },
+    {
+      "id": "glitch",
+      "name": "Glitch Screen",
+      "file": "glitch.svg"
+    },
+    {
+      "id": "matrix",
+      "name": "Matrix Code",
+      "file": "matrix.svg"
+    },
+    {
+      "id": "warning",
+      "name": "Warning Alert",
+      "file": "warning.svg"
+    }
+  ],
+  "sounds": [
+    {
+      "id": "alarm",
+      "name": "Alarm Sound",
+      "file": "alarm.mp3"
+    },
+    {
+      "id": "error",
+      "name": "Error Beep",
+      "file": "error.mp3"
+    },
+    {
+      "id": "glitch_sound",
+      "name": "Glitch Effect",
+      "file": "glitch.mp3"
+    },
+    {
+      "id": "laugh",
+      "name": "Evil Laugh",
+      "file": "laugh.mp3"
+    },
+    {
+      "id": "static",
+      "name": "Static Noise",
+      "file": "static.mp3"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#000000"/>
+
+  <!-- Skull ASCII Art -->
+  <text x="400" y="80" font-family="Courier New" font-size="16" fill="#ff0000" text-anchor="middle" font-weight="bold">
+    ⚠️ WARNING ⚠️
+  </text>
+
+  <text x="400" y="150" font-family="Courier New" font-size="12" fill="#ffffff" text-anchor="middle">
+              ___
+  </text>
+  <text x="400" y="170" font-family="Courier New" font-size="12" fill="#ffffff" text-anchor="middle">
+         .--'   `-.
+  </text>
+  <text x="400" y="190" font-family="Courier New" font-size="12" fill="#ffffff" text-anchor="middle">
+        /         \
+  </text>
+  <text x="400" y="210" font-family="Courier New" font-size="12" fill="#ffffff" text-anchor="middle">
+       |  O     O  |
+  </text>
+  <text x="400" y="230" font-family="Courier New" font-size="12" fill="#ffffff" text-anchor="middle">
+       |     ^     |
+  </text>
+  <text x="400" y="250" font-family="Courier New" font-size="12" fill="#ffffff" text-anchor="middle">
+       |  \_____/  |
+  </text>
+  <text x="400" y="270" font-family="Courier New" font-size="12" fill="#ffffff" text-anchor="middle">
+        \_________/
+  </text>
+
+  <text x="400" y="350" font-family="Courier New" font-size="30" fill="#ff0000" text-anchor="middle" font-weight="bold">
+    ACCESS DENIED
+  </text>
+
+  <text x="400" y="420" font-family="Courier New" font-size="18" fill="#ffffff" text-anchor="middle">
+    SYSTEM COMPROMISED
+  </text>
+
+  <text x="400" y="470" font-family="Courier New" font-size="14" fill="#888888" text-anchor="middle">
+    All your data belongs to us
+  </text>
+
+  <!-- Blinking effect -->
+  <rect x="0" y="0" width="800" height="600" fill="#ff0000" opacity="0">
+    <animate attributeName="opacity" values="0;0.2;0" dur="1s" repeatCount="indefinite"/>
+  </rect>
+</svg>

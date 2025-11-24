@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[ АДМИН ТЕРМИНАЛ ]</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container" style="max-width: 1400px;">
+        <div class="terminal admin-container">
+            <div class="terminal-header chat-header">
+                <div class="chat-info">
+                    <div class="status">
+                        <span class="status-indicator"></span>
+                        <span id="connection-status">ПОДКЛЮЧЕНО</span>
+                    </div>
+                    <div>
+                        ПАНЕЛЬ АДМИНИСТРАТОРА
+                    </div>
+                </div>
+                <button class="btn-logout" onclick="logout()">[ ВЫХОД ]</button>
+            </div>
+
+            <div class="admin-main">
+                <div class="users-panel">
+                    <div class="users-header">
+                        [ АКТИВНЫЕ ПОЛЬЗОВАТЕЛИ ]
+                    </div>
+                    <div class="users-list" id="usersList">
+                        <div style="padding: 20px; text-align: center; color: #888888;">
+                            Нет пользователей онлайн
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-panel" id="chatPanel">
+                    <div class="no-user-selected">
+                        [ ВЫБЕРИТЕ ПОЛЬЗОВАТЕЛЯ ДЛЯ НАЧАЛА ЧАТА ]
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

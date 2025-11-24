@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install)",
+      "Bash(dir:*)",
+      "Bash(move ui_hacking_passbad.wav \"public\\media\\sounds\"\" && move ui_hacking_passgood.wav \"publicmediasounds\"\")",
+      "Bash(npm install:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

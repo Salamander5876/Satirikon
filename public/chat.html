@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[ ЗАЩИЩЁННЫЙ ЧАТ ]</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container" style="max-width: 1000px;">
+        <div class="terminal chat-container">
+            <div class="terminal-header chat-header">
+                <div class="chat-info">
+                    <div class="status">
+                        <span class="status-indicator"></span>
+                        <span id="connection-status">ПОДКЛЮЧЕНО</span>
+                    </div>
+                    <div>
+                        ПОЛЬЗОВАТЕЛЬ: <span id="username"></span>
+                    </div>
+                </div>
+                <button class="btn-logout" onclick="logout()">[ ВЫХОД ]</button>
+            </div>
+
+            <div class="terminal-body" style="padding: 0; height: calc(90vh - 60px); display: flex; flex-direction: column;">
+                <div class="messages-container" id="messages">
+                    <div class="message" style="border: none; background: none; text-align: center; color: #888888;">
+                        [ ОЖИДАНИЕ ПОДКЛЮЧЕНИЯ АДМИНИСТРАТОРА ]
+                    </div>
+                </div>
+
+                <div class="input-container">
+                    <input
+                        type="text"
+                        id="messageInput"
+                        class="message-input"
+                        placeholder="> Введите сообщение..."
+                        autocomplete="off"
+                    />
+                    <button class="btn-send" onclick="sendMessage()">[ ОТПРАВИТЬ ]</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="chat.js"></script>
+</body>
+</html>

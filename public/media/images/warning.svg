@@ -1,0 +1,33 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#000000"/>
+
+  <!-- Warning triangle -->
+  <polygon points="400,100 600,450 200,450" fill="none" stroke="#ffff00" stroke-width="5">
+    <animate attributeName="opacity" values="1;0.5;1" dur="1s" repeatCount="indefinite"/>
+  </polygon>
+
+  <text x="400" y="250" font-family="Courier New" font-size="100" fill="#ffff00" text-anchor="middle" font-weight="bold">
+    !
+  </text>
+
+  <text x="400" y="500" font-family="Courier New" font-size="28" fill="#ffff00" text-anchor="middle" font-weight="bold">
+    SECURITY ALERT
+  </text>
+
+  <text x="400" y="540" font-family="Courier New" font-size="16" fill="#ffffff" text-anchor="middle">
+    Your system has been accessed
+  </text>
+
+  <!-- Flashing red background -->
+  <rect x="0" y="0" width="800" height="600" fill="#ff0000" opacity="0">
+    <animate attributeName="opacity" values="0;0.15;0" dur="0.8s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- Warning bars -->
+  <rect x="0" y="0" width="800" height="20" fill="#ffff00">
+    <animate attributeName="opacity" values="1;0.3;1" dur="1s" repeatCount="indefinite"/>
+  </rect>
+  <rect x="0" y="580" width="800" height="20" fill="#ffff00">
+    <animate attributeName="opacity" values="1;0.3;1" dur="1s" repeatCount="indefinite"/>
+  </rect>
+</svg>

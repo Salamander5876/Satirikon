@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sound Generator</title>
+</head>
+<body>
+    <h1>Troll Sound Generator</h1>
+    <p>Open browser console and run the functions to download sounds</p>
+
+    <script>
+        // Generate and download alarm sound
+        function generateAlarm() {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const sampleRate = audioContext.sampleRate;
+            const duration = 2;
+            const numChannels = 1;
+            const length = sampleRate * duration;
+
+            const audioBuffer = audioContext.createBuffer(numChannels, length, sampleRate);
+            const channelData = audioBuffer.getChannelData(0);
+
+            // Generate alarm beep pattern
+            for (let i = 0; i < length; i++) {
+                const t = i / sampleRate;
+                const beep = Math.sin(2 * Math.PI * 800 * t) *
+                           (Math.floor(t * 4) % 2 === 0 ? 0.5 : 0);
+                channelData[i] = beep;
+            }
+
+            downloadAudio(audioBuffer, 'alarm.wav');
+        }
+
+        // Generate error beep
+        function generateError() {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const sampleRate = audioContext.sampleRate;
+            const duration = 0.5;
+            const numChannels = 1;
+            const length = sampleRate * duration;
+
+            const audioBuffer = audioContext.createBuffer(numChannels, length, sampleRate);
+            const channelData = audioBuffer.getChannelData(0);
+
+            for (let i = 0; i < length; i++) {
+                const t = i / sampleRate;
+                channelData[i] = Math.sin(2 * Math.PI * 400 * t) * 0.3 * Math.exp(-t * 5);
+            }
+
+            downloadAudio(audioBuffer, 'error.wav');
+        }
+
+        // Generate glitch sound
+        function generateGlitch() {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const sampleRate = audioContext.sampleRate;
+            const duration = 1.5;
+            const numChannels = 1;
+            const length = sampleRate * duration;
+
+            const audioBuffer = audioContext.createBuffer(numChannels, length, sampleRate);
+            const channelData = audioBuffer.getChannelData(0);
+
+            for (let i = 0; i < length; i++) {
+                channelData[i] = (Math.random() * 2 - 1) * 0.2 * Math.sin(i / 100);
+            }
+
+            downloadAudio(audioBuffer, 'glitch.wav');
+        }
+
+        // Generate static noise
+        function generateStatic() {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const sampleRate = audioContext.sampleRate;
+            const duration = 2;
+            const numChannels = 1;
+            const length = sampleRate * duration;
+
+            const audioBuffer = audioContext.createBuffer(numChannels, length, sampleRate);
+            const channelData = audioBuffer.getChannelData(0);
+
+            for (let i = 0; i < length; i++) {
+                channelData[i] = (Math.random() * 2 - 1) * 0.15;
+            }
+
+            downloadAudio(audioBuffer, 'static.wav');
+        }
+
+        // Download audio buffer as WAV
+        function downloadAudio(audioBuffer, filename) {
+            const wav = audioBufferToWav(audioBuffer);
+            const blob = new Blob([wav], { type: 'audio/wav' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename.replace('.mp3', '.wav');
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // Convert AudioBuffer to WAV
+        function audioBufferToWav(buffer) {
+            const numChannels = buffer.numberOfChannels;
+            const sampleRate = buffer.sampleRate;
+            const format = 1; // PCM
+            const bitDepth = 16;
+
+            let length = buffer.length * numChannels * 2;
+            let wav = new ArrayBuffer(44 + length);
+            let view = new DataView(wav);
+
+            // WAV header
+            writeString(view, 0, 'RIFF');
+            view.setUint32(4, 36 + length, true);
+            writeString(view, 8, 'WAVE');
+            writeString(view, 12, 'fmt ');
+            view.setUint32(16, 16, true);
+            view.setUint16(20, format, true);
+            view.setUint16(22, numChannels, true);
+            view.setUint32(24, sampleRate, true);
+            view.setUint32(28, sampleRate * numChannels * bitDepth / 8, true);
+            view.setUint16(32, numChannels * bitDepth / 8, true);
+            view.setUint16(34, bitDepth, true);
+            writeString(view, 36, 'data');
+            view.setUint32(40, length, true);
+
+            // Audio data
+            let offset = 44;
+            for (let i = 0; i < buffer.length; i++) {
+                for (let channel = 0; channel < numChannels; channel++) {
+                    let sample = buffer.getChannelData(channel)[i];
+                    sample = Math.max(-1, Math.min(1, sample));
+                    view.setInt16(offset, sample < 0 ? sample * 0x8000 : sample * 0x7FFF, true);
+                    offset += 2;
+                }
+            }
+
+            return wav;
+        }
+
+        function writeString(view, offset, string) {
+            for (let i = 0; i < string.length; i++) {
+                view.setUint8(offset + i, string.charCodeAt(i));
+            }
+        }
+
+        // Call functions to generate sounds
+        console.log('Run these functions to generate sounds:');
+        console.log('generateAlarm()');
+        console.log('generateError()');
+        console.log('generateGlitch()');
+        console.log('generateStatic()');
+    </script>
+
+    <button onclick="generateAlarm()">Generate Alarm</button>
+    <button onclick="generateError()">Generate Error</button>
+    <button onclick="generateGlitch()">Generate Glitch</button>
+    <button onclick="generateStatic()">Generate Static</button>
+</body>
+</html>

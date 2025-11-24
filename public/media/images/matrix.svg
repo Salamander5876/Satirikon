@@ -1,0 +1,45 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#000000"/>
+
+  <!-- Matrix rain effect (simplified) -->
+  <text x="50" y="50" font-family="Courier New" font-size="14" fill="#00ff00" opacity="0.7">
+    1 0 0 1 0 1 1 0
+    <animate attributeName="y" values="50;600;50" dur="5s" repeatCount="indefinite"/>
+  </text>
+  <text x="150" y="150" font-family="Courier New" font-size="14" fill="#00ff00" opacity="0.6">
+    0 1 1 0 1 0 0 1
+    <animate attributeName="y" values="150;600;150" dur="6s" repeatCount="indefinite"/>
+  </text>
+  <text x="250" y="80" font-family="Courier New" font-size="14" fill="#00ff00" opacity="0.8">
+    1 1 0 0 1 1 0 1
+    <animate attributeName="y" values="80;600;80" dur="4.5s" repeatCount="indefinite"/>
+  </text>
+  <text x="350" y="200" font-family="Courier New" font-size="14" fill="#00ff00" opacity="0.5">
+    0 0 1 1 0 1 1 0
+    <animate attributeName="y" values="200;600;200" dur="7s" repeatCount="indefinite"/>
+  </text>
+  <text x="450" y="120" font-family="Courier New" font-size="14" fill="#00ff00" opacity="0.7">
+    1 0 1 0 1 0 1 0
+    <animate attributeName="y" values="120;600;120" dur="5.5s" repeatCount="indefinite"/>
+  </text>
+  <text x="550" y="180" font-family="Courier New" font-size="14" fill="#00ff00" opacity="0.6">
+    0 1 0 1 0 1 0 1
+    <animate attributeName="y" values="180;600;180" dur="6.5s" repeatCount="indefinite"/>
+  </text>
+  <text x="650" y="90" font-family="Courier New" font-size="14" fill="#00ff00" opacity="0.8">
+    1 1 1 0 0 0 1 1
+    <animate attributeName="y" values="90;600;90" dur="4s" repeatCount="indefinite"/>
+  </text>
+
+  <!-- Center message -->
+  <rect x="150" y="250" width="500" height="120" fill="#000000" opacity="0.8"/>
+  <rect x="150" y="250" width="500" height="120" fill="none" stroke="#00ff00" stroke-width="2"/>
+
+  <text x="400" y="300" font-family="Courier New" font-size="36" fill="#00ff00" text-anchor="middle" font-weight="bold">
+    WAKE UP
+  </text>
+
+  <text x="400" y="340" font-family="Courier New" font-size="20" fill="#00ff00" text-anchor="middle">
+    The Matrix has you...
+  </text>
+</svg>

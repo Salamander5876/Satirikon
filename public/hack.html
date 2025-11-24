@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[ ROBCO INDUSTRIES UNIFIED OPERATING SYSTEM ]</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .hack-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .hack-terminal {
+            background-color: #000000;
+            border: 2px solid #ffffff;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            color: #ffffff;
+            box-shadow: 0 0 20px #ffffff;
+        }
+
+        .hack-header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ffffff;
+        }
+
+        .hack-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .hack-display {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            min-height: 400px;
+        }
+
+        .hack-column {
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 15px;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .hack-word {
+            cursor: pointer;
+            display: inline;
+            transition: all 0.1s;
+        }
+
+        .hack-word:hover {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        .hack-word.selected {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        .hack-log {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .hack-log-entry {
+            margin-bottom: 5px;
+        }
+
+        .hack-log-entry.error {
+            color: #ff0000;
+        }
+
+        .hack-log-entry.success {
+            color: #00ff00;
+        }
+
+        .hack-attempts {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+
+        .attempt-box {
+            width: 15px;
+            height: 15px;
+            border: 1px solid #ffffff;
+            background-color: #00ff00;
+        }
+
+        .attempt-box.used {
+            background-color: #000000;
+        }
+
+        .hack-complete {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .hack-complete h2 {
+            color: #00ff00;
+            font-size: 36px;
+            margin-bottom: 20px;
+            animation: blink 1s infinite;
+        }
+
+        .btn-continue {
+            padding: 15px 30px;
+            background-color: #000000;
+            border: 2px solid #00ff00;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+
+        .btn-continue:hover {
+            background-color: #00ff00;
+            color: #000000;
+        }
+
+        .btn-back {
+            padding: 10px 20px;
+            background-color: #000000;
+            border: 2px solid #ff0000;
+            color: #ff0000;
+            font-family: 'Courier New', monospace;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-back:hover {
+            background-color: #ff0000;
+            color: #000000;
+        }
+    </style>
+</head>
+<body>
+    <div class="hack-container">
+        <div class="hack-terminal">
+            <div class="hack-header">
+                <h1>ROBCO INDUSTRIES (TM) TERMLINK PROTOCOL</h1>
+                <p>ENTER PASSWORD NOW</p>
+            </div>
+
+            <div id="gameArea">
+                <div class="hack-info">
+                    <div>
+                        <strong>УРОВЕНЬ:</strong> <span id="currentLevel">1</span> / 5
+                    </div>
+                    <div>
+                        <strong>СЛОЖНОСТЬ:</strong> <span id="difficulty">ОЧЕНЬ ЛЕГКО</span>
+                    </div>
+                    <div>
+                        <strong>ПОПЫТКИ:</strong>
+                        <div class="hack-attempts" id="attemptsDisplay"></div>
+                    </div>
+                </div>
+
+                <div class="hack-display">
+                    <div class="hack-column" id="leftColumn"></div>
+                    <div class="hack-column" id="rightColumn"></div>
+                </div>
+
+                <div class="hack-log" id="hackLog">
+                    <div class="hack-log-entry">> Система инициализирована...</div>
+                    <div class="hack-log-entry">> Выберите правильный пароль</div>
+                </div>
+            </div>
+
+            <div id="completeArea" style="display: none;" class="hack-complete">
+                <h2>ДОСТУП РАЗРЕШЕН</h2>
+                <p>Учетные данные:</p>
+                <p style="font-size: 20px; margin: 20px 0;">
+                    <strong>Логин:</strong> <span id="revealedUsername"></span><br>
+                    <strong>Пароль:</strong> <span id="revealedPassword"></span>
+                </p>
+                <button class="btn-continue" onclick="returnToLogin()">[ ВОЙТИ В СИСТЕМУ ]</button>
+            </div>
+
+            <div style="text-align: center; margin-top: 20px;">
+                <button class="btn-back" onclick="window.location.href='/'">[ НАЗАД К ВХОДУ ]</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Звуковые эффекты -->
+    <audio id="soundPassGood" preload="auto">
+        <source src="/media/sounds/ui_hacking_passgood.wav" type="audio/wav">
+    </audio>
+    <audio id="soundPassBad" preload="auto">
+        <source src="/media/sounds/ui_hacking_passbad.wav" type="audio/wav">
+    </audio>
+
+    <script src="hack.js"></script>
+</body>
+</html>
